@@ -1,9 +1,9 @@
-const name = "Mayas";
+const name = "Kader";
 let age = 19;
 const isStudent = true;
 
 const numbers = [3, 8, 1, 10, 6];
-const user = { id: 1, name: "Mayas", city: "Paris" };
+const user = { id: 1, name: "Kader", city: "Paris" };
 
 console.log("Types:", typeof name, typeof age, typeof isStudent);
 console.log("Array:", numbers);
