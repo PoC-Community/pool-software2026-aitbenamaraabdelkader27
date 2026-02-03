@@ -11,6 +11,8 @@ import { Search } from "./testeffects/Search";
 import { ComposedCardDemo } from "./testeffects/ComposedCard";
 import { PropsDrillingDemo } from "./testeffects/PropsDrilling";
 import { TemperatureConverter } from "./testeffects/TemperatureConverter";
+import { ProductList } from "./testeffects/ProductList";
+
 
 
 export default function App() {
@@ -46,17 +48,21 @@ export default function App() {
       <Card title="Search" description="Controlled input + debounce">
         <Search />
       </Card>
-      <Card title="Component composition" description="Composition with children">
+      <Card title="Step 5.1" description="Composition with children">
         <ComposedCardDemo />
       </Card>
 
-      <Card title="Popsdrilling" description="Props drilling (Parent → Child → GrandChild)">
+      <Card title="Step 5.2" description="Props drilling (Parent → Child → GrandChild)">
         <PropsDrillingDemo />
       </Card>
 
-      <Card title="Lift state up" description="Lift state up (Celsius/Fahrenheit)">
+      <Card title="Step 5.3" description="Lift state up (Celsius/Fahrenheit)">
         <TemperatureConverter />
       </Card>
+      <Card title="Step 5.4" description="Product list with filter and search">
+        <ProductList />
+      </Card>
+
     </div>  
   );
 }
