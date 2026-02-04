@@ -12,6 +12,7 @@ import { ComposedCardDemo } from "./testeffects/ComposedCard";
 import { PropsDrillingDemo } from "./testeffects/PropsDrilling";
 import { TemperatureConverter } from "./testeffects/TemperatureConverter";
 import { ProductList } from "./testeffects/ProductList";
+import { TodoApp } from "./todoApp/todoApp";
 
 
 
