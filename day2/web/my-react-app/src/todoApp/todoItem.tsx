@@ -1,29 +1,34 @@
-import { useState } from 'react';
-import type { Todo } from '../types/todo';
+import { useState } from "react";
+import type { Todo } from "../types/todo";
 
 type Props = {
-    todo: Todo;
-    onToggle: (id: string) => void;
-    onDelete: (id: string) => void;
-    onEdit: (id: string, newText: string) => void;
-};
-export function TodoItem({ todo, onToggle, onDelete, onEdit }: Props) {
-    const [editing, setEditing] = useState(false);
-    const [draft, setDraft] = useState(todo.text);
+  todo: Todo;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, newText: string) => void;
 
-    function startEdit() {
-        setEditing(true);
-        setDraft(todo.text);
-    }
-    function commit() {
-        onEdit(todo.id, draft);
-        setEditing(false);
-    }
-    function cancel() {
-        setEditing(false);
-        setDraft(todo.text);
-    }
-    return (
+};
+
+export function TodoItem({ todo, onToggle, onDelete, onEdit }: Props) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(todo.text);
+
+  function startEdit() {
+    setDraft(todo.text);
+    setEditing(true);
+  }
+
+  function commit() {
+    onEdit(todo.id, draft);
+    setEditing(false);
+  }
+
+  function cancel() {
+    setDraft(todo.text);
+    setEditing(false);
+  }
+
+  return (
     <li
       style={{
         border: "1px solid #e6e6e6",

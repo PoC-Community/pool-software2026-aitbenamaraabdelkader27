@@ -1,11 +1,12 @@
 import type { Todo } from "../types/todo";
-import { TodoItem } from "./todoItem";
+import { TodoItem } from "../todoApp/todoItem";
 
 type Props = {
   todos: Todo[];
-  onToggle: (id: string) => void;
-  onDelete: (id: string) => void;
-  onEdit: (id: string, text: string) => void;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, text: string) => void;
+
 };
 
 export function TodoList({ todos, onToggle, onDelete, onEdit }: Props) {
