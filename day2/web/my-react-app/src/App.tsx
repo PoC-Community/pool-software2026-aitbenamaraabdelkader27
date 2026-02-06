@@ -1,4 +1,6 @@
-import { Header } from "./components/header";
+import { useState } from "react";
+import { Header } from "./components/Header";
+
 import { Button } from "./components/Button";
 import { Counter } from "./components/Counter";
 import { Card } from "./components/Card";
@@ -12,11 +14,14 @@ import { ComposedCardDemo } from "./testeffects/ComposedCard";
 import { PropsDrillingDemo } from "./testeffects/PropsDrilling";
 import { TemperatureConverter } from "./testeffects/TemperatureConverter";
 import { ProductList } from "./testeffects/ProductList";
-import { TodoApp } from "./todoApp/todoApp";
 
+import { TodoApp } from "./todoApp/todoApp";
+import { AuthBox } from "./components/AuthBox";
 
 
 export default function App() {
+  const [refreshKey, setRefreshKey] = useState(0);
+
   return (
     <div>
       <Header title="Welcome to My App" />
@@ -42,6 +47,7 @@ export default function App() {
       <Card title="LocalStorage" description="useEffect + dependencies">
         <LocalStorageDemo />
       </Card>
+
       <Card title="Contact Form" description="Controlled form + validation">
         <ContactForm />
       </Card>
@@ -49,6 +55,7 @@ export default function App() {
       <Card title="Search" description="Controlled input + debounce">
         <Search />
       </Card>
+
       <Card title="Step 5.1" description="Composition with children">
         <ComposedCardDemo />
       </Card>
@@ -60,10 +67,18 @@ export default function App() {
       <Card title="Step 5.3" description="Lift state up (Celsius/Fahrenheit)">
         <TemperatureConverter />
       </Card>
+
       <Card title="Step 5.4" description="Product list with filter and search">
         <ProductList />
       </Card>
 
-    </div>  
+      <Card title="Auth" description="Register/Login + store token">
+        <AuthBox onAuthChange={() => setRefreshKey((k) => k + 1)} />
+      </Card>
+
+      <Card title="Todo App" description="React → Backend → DB">
+        <TodoApp refreshKey={refreshKey} />
+      </Card>
+    </div>
   );
 }

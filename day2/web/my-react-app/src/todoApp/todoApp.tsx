@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { AuthBox } from "../components/AuthBox";
 import type { Filter, Todo } from "../types/todo";
 import { TodoForm } from "./todoForm";
 import { TodoList } from "./todoList";
@@ -6,24 +7,25 @@ import { TodoFilter } from "./todoFilter";
 import { TodoStats } from "./todoStats";
 import { apiCreateTask, apiDeleteTask, apiListTasks, apiUpdateTask } from "../api/todoApi";
 
-export function TodoApp() {
+
+export function TodoApp({ refreshKey }: { refreshKey: number }) {
+
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
   const [error, setError] = useState<string | null>(null);
 
-  // Load initial tasks from backend
   useEffect(() => {
     (async () => {
       try {
         setError(null);
         const tasks = await apiListTasks();
-        // API -> UI
+      
         setTodos(tasks.map(t => ({ id: t.id, text: t.title, completed: t.completed })));
       } catch (e: any) {
         setError(e.message || "Failed to load tasks");
       }
     })();
-  }, []);
+  }, [refreshKey]);
 
   const visibleTodos = useMemo(() => {
     if (filter === "active") return todos.filter((t) => !t.completed);
@@ -83,7 +85,7 @@ export function TodoApp() {
   }
 
   async function clearCompleted() {
-    // simple: on delete une par une
+
     const toDelete = todos.filter(t => t.completed);
 
     try {
