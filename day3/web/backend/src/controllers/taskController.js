@@ -144,8 +144,8 @@ async function update(req, res) {
 
     sets.push(`updated_at = NOW()`);
 
-    params.push(id);      // $p
-    params.push(userId);  // $(p+1)
+    params.push(id);      
+    params.push(userId);  
 
     const sql = `
       UPDATE tasks
